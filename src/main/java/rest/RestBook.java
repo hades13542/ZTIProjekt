@@ -25,11 +25,11 @@ public class RestBook {
     @Produces({MediaType.APPLICATION_JSON})
     public Book[] get() {
         System.out.println("GET");
-        DatabaseConnection db = new DatabaseConnection();
-        Session session = db.getSession();
+        Session session = DatabaseConnection.getSession();
         session.beginTransaction();
         
-        List<Object> autorzy = session.createQuery("from Book").list();
+        @SuppressWarnings("unchecked")
+		List<Object> autorzy = session.createQuery("from Book").list();
  
         session.getTransaction().commit();
         System.out.println(Arrays.toString(autorzy.toArray()));

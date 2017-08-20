@@ -6,7 +6,7 @@ import org.hibernate.cfg.Configuration;
 
 public class DatabaseConnection {
 
-	public Session getSession() {
+	public static Session getSession() {
 	SessionFactory sessionFactory = new Configuration().configure().buildSessionFactory();
 	return sessionFactory.openSession();	
 	}
