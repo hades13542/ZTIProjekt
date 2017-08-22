@@ -9,7 +9,10 @@
 <h:body>
     <h:form>
         <p>Welcome #{login.username}</p>
-        <h:commandLink action="#{login.logout}" value="Logout"></h:commandLink>
+        <h:commandButton action="#{login.addBook}" value="Add Book"></h:commandButton><br></br>
+        <h:commandButton action="#{login.findBook}" value="Find book"></h:commandButton><br></br>
+        <h:commandButton action="#{login.yourBook}" value="Rented books"></h:commandButton><br></br>
+        <h:commandButton action="#{login.logout}" value="Logout"></h:commandButton>
     </h:form>
 </h:body>
 </html>

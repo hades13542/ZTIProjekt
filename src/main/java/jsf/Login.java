@@ -34,12 +34,20 @@ public class Login implements Serializable {
 		this.username = username;
 	}
 
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	
 	public String validateUsernamePassword() {
 		boolean valid = LoginDAO.validate(username, password);
 		if (valid) {
 			HttpSession session = SessionUtils.getSession();
 			session.setAttribute("username", username);
-			return "admin"; // TODO: change ?
+			return "admin?faces-redirect=true"; // TODO: change ?
 		} else {
 			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage(FacesMessage.SEVERITY_WARN,
 					"Incorrect username and password", "Please enter correct username and password"));
@@ -49,14 +57,10 @@ public class Login implements Serializable {
 	
 	public String logout() {
 		SessionUtils.getSession().invalidate();
-		return "login";
+		return "login?faces-redirect=true";
 	}
 	
 	public String register() throws IOException {
-		//Spytac  
-		//ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
-		//ec.redirect(ec.getRequestContextPath() + "/register.xhtml");
-		//return "register";
 		boolean isUsernameTaken = LoginDAO.checkUsernameAvailability(username);
 		if (!isUsernameTaken) {
 			LoginDAO.createNewUser(username,password,email);
@@ -68,11 +72,20 @@ public class Login implements Serializable {
 		}
 	}
 
-	public String getEmail() {
-		return email;
+	//./
+	public String addBook() {
+		System.out.println("dziala");
+		return "addBook?faces-redirect=true";
+	}
+	
+	public String findBook() {
+		System.out.println("dziala");
+		return "findBook?faces-redirect=true";
+	}
+	
+	public String yourBook() {
+		System.out.println("dziala");
+		return "yourBook?faces-redirect=true";
 	}
 
-	public void setEmail(String email) {
-		this.email = email;
-	}
 }
