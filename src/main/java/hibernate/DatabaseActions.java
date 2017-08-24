@@ -2,6 +2,7 @@ package hibernate;
 
 import org.hibernate.Session;
 
+import models.Book;
 import models.User;
 
 public class DatabaseActions {
@@ -38,6 +39,15 @@ public class DatabaseActions {
 		Session session = DatabaseConnection.getSession();
 		session.beginTransaction();
 		session.save(newUser);
+		session.getTransaction().commit();
+		session.close();
+		DatabaseConnection.closeSession();
+	}
+
+	public static void addBook(Book book) {
+		Session session = DatabaseConnection.getSession();
+		session.beginTransaction();
+		session.save(book);
 		session.getTransaction().commit();
 		session.close();
 		DatabaseConnection.closeSession();

@@ -1,8 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <pageflow:Pageflow xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:pageflow="http://www.sybase.com/suade/pageflow" id="pf15032465081190" configfile="/ZTIProjekt/src/main/webapp/WEB-INF/faces-config.xml">
-  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" id="pf15032466020481" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf15032466020482 pf150343948269330" path="/login.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="admin.xhtml" id="pf15032466020493" referenceLink="//@navigationRule.1/@fromViewId|" inlinks="pf15032466020482" path="/admin.xhtml"/>
-  <nodes xsi:type="pageflow:PFPage" name="addBook.xhtml" id="pf150343929428229" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf150343948269330" path="/addBook.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="login.xhtml" x="215" y="504" id="pf15032466020481" referenceLink="//@navigationRule.0/@fromViewId|" outlinks="pf15032466020482 pf15035169753207 pf150351776824311 pf150351776824312 pf150351879300816" path="/login.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="admin.xhtml" x="432" y="142" id="pf15032466020493" referenceLink="//@navigationRule.1/@fromViewId|" inlinks="pf15032466020482" path="/admin.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="register.xhtml" x="215" y="77" id="pf15035167945253" referenceLink="//@navigationRule.0/@navigationCase.1/@toViewId|" inlinks="pf15035169753207" path="/register.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="findBook.xhtml" x="334" y="12" id="pf150351776824414" referenceLink="//@navigationRule.0/@navigationCase.3/@toViewId|" inlinks="pf150351776824311" path="/findBook.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="yourBook.xhtml" x="552" y="96" id="pf150351776824415" referenceLink="//@navigationRule.0/@navigationCase.4/@toViewId|" inlinks="pf150351776824312" path="/yourBook.xhtml"/>
+  <nodes xsi:type="pageflow:PFPage" name="addBook.xhtml" id="pf150351879300817" referenceLink="//@navigationRule.0/@navigationCase.2/@toViewId|" inlinks="pf150351879300816" path="/addBook.xhtml"/>
   <links id="pf15032466020482" target="pf15032466020493" source="pf15032466020481" outcome="admin"/>
-  <links id="pf150343948269330" target="pf150343929428229" source="pf15032466020481" outcome="addBook" fromaction="#{login.addBook}"/>
+  <links id="pf15035169753207" target="pf15035167945253" source="pf15032466020481" outcome="register"/>
+  <links id="pf150351776824311" target="pf150351776824414" source="pf15032466020481" outcome="findBook"/>
+  <links id="pf150351776824312" target="pf150351776824415" source="pf15032466020481" outcome="yourBook"/>
+  <links id="pf150351879300816" target="pf150351879300817" source="pf15032466020481" outcome="addBook"/>
 </pageflow:Pageflow>

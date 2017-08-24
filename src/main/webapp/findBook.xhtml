@@ -6,29 +6,6 @@
 	<title>Find book</title>
 </h:head>
 <h:body>
-	<h:form id="register">
-		<h3>JSF Register</h3>
-		<h:outputText value="Username" />
-		<h:inputText id="username" value="#{login.username}"></h:inputText>
-		<h:message for="username"></h:message>
-		<br></br>
-		<br></br>
 
-		<h:outputText value="Password" />
-		<h:inputSecret id="password" value="#{login.password}"></h:inputSecret>
-		<h:message for="password"></h:message>
-		<br></br>
-		<br></br>
-
-		<h:outputText value="E-mail" />
-		<h:inputText id="email" value="#{login.email}"></h:inputText>
-		<h:message for="email"></h:message>
-		<br></br>
-		<br></br>
-
-		<h:commandButton action="#{login.register}" value="Register"></h:commandButton><br></br>
-		<h:commandButton action="login" value="Back to login page"></h:commandButton>
-		<h:message for="register"></h:message>
-	</h:form>
 </h:body>
 </html>

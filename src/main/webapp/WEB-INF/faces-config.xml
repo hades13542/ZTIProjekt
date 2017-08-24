@@ -11,10 +11,21 @@
 			<to-view-id>/admin.xhtml</to-view-id>
 		</navigation-case>
 		<navigation-case>
-			<from-action>#{login.addBook}</from-action>
+			<from-outcome>register</from-outcome>
+			<to-view-id>/register.xhtml</to-view-id>
+		</navigation-case>
+		<navigation-case>
 			<from-outcome>addBook</from-outcome>
 			<to-view-id>/addBook.xhtml</to-view-id>
 		</navigation-case>
+		      <navigation-case>
+            <from-outcome>findBook</from-outcome>
+            <to-view-id>/findBook.xhtml</to-view-id>
+        </navigation-case>
+                <navigation-case>
+            <from-outcome>yourBook</from-outcome>
+            <to-view-id>/yourBook.xhtml</to-view-id>
+        </navigation-case>
+        
 	</navigation-rule>
-
 </faces-config>
