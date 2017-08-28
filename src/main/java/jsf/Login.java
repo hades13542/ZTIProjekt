@@ -95,7 +95,7 @@ public class Login implements Serializable {
 //	}
 	
 	public String findBook() {
-		System.out.println("dziala");
+		System.out.println("findbook");
 		return "findBook?faces-redirect=true";
 	}
 	

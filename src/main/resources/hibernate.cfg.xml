@@ -14,7 +14,7 @@
         <property name="connection.password">uwF7e_JHgVVayK5fI0HD7MUDGJ8WrPRL</property>
  
         <!-- JDBC connection pool (use the built-in) -->
-        <property name="connection.pool_size">1</property>
+        <property name="connection.pool_size">5</property>
  
         <!-- SQL dialect -->
         <property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
@@ -31,6 +31,10 @@
         <!-- Drop and re-create the database schema on startup -->
         <property name="hbm2ddl.auto">update</property>
  
+        <property name="connection.autocommit">true</property>
+        <property name="connection.release_mode">after_transaction</property>
+        <property name="transaction.auto_close_session">true</property>
+        
         <mapping class="models.Book"/>
         <mapping class="models.User" />
  

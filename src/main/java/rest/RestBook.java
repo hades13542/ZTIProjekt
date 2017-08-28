@@ -27,28 +27,15 @@ public class RestBook {
     @Produces({MediaType.APPLICATION_JSON})
     public Book[] get() {
         System.out.println("GET");
-        Session session = DatabaseConnection.getSession();
-        session.beginTransaction();
-        
-        @SuppressWarnings("unchecked")
-		List<Object> autorzy = session.createQuery("from Book").list();
- 
-        session.getTransaction().commit();
-        for(Object b : autorzy) {
-        	System.out.println((Book) b);
-        }
-        Book[] v = Arrays.copyOf(autorzy.toArray(), autorzy.toArray().length, Book[].class);
-        
-        return v;
+        return DatabaseActions.getAllBooks();
     }
- 
+
     @GET
     @Path("{id}")
     @Produces({MediaType.APPLICATION_JSON})
-    public Book get(@PathParam("id") String id) {
-        System.out.println("GET");
-        Book b = new Book();
-        return b;
+    public Book[] get(@PathParam("id") String id) {
+        System.out.println("GET with id" + id);
+        return DatabaseActions.getYourBooks(id);
     }
  
     @POST

@@ -1,11 +1,24 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:b="http://bootsfaces.net/ui"
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
 	<title>Find book</title>
 </h:head>
 <h:body>
 
+	<h:form>
+		<b:dataTable value="#{findbook.bookList}" var="book"
+			class="editableCarTable">
+			<b:dataTableColumn value="#{book.title}" />
+ 			<b:dataTableColumn value="#{book.author}" />
+ 			<b:dataTableColumn label="Rended" >
+ 			    <b:commandButton disabled="#{book.rented != 'no'}" value="Rent" action="#{findbook.rent(book)}"/> 			    
+ 			</b:dataTableColumn>
+		</b:dataTable>
+		 <b:commandButton action="admin?faces-redirect=true" value="Back to main"></b:commandButton>
+	</h:form>
+   
 </h:body>
 </html>

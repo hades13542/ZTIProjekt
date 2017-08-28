@@ -1,34 +1,25 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:h="http://java.sun.com/jsf/html">
+    xmlns:b="http://bootsfaces.net/ui"
+    xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
-	<title>Your book</title>
+    <title>Your books</title>
 </h:head>
 <h:body>
-	<h:form id="register">
-		<h3>JSF Register</h3>
-		<h:outputText value="Username" />
-		<h:inputText id="username" value="#{login.username}"></h:inputText>
-		<h:message for="username"></h:message>
-		<br></br>
-		<br></br>
 
-		<h:outputText value="Password" />
-		<h:inputSecret id="password" value="#{login.password}"></h:inputSecret>
-		<h:message for="password"></h:message>
-		<br></br>
-		<br></br>
-
-		<h:outputText value="E-mail" />
-		<h:inputText id="email" value="#{login.email}"></h:inputText>
-		<h:message for="email"></h:message>
-		<br></br>
-		<br></br>
-
-		<h:commandButton action="#{login.register}" value="Register"></h:commandButton><br></br>
-		<h:commandButton action="login" value="Back to login page"></h:commandButton>
-		<h:message for="register"></h:message>
-	</h:form>
+    <h:form>
+        <b:dataTable value="#{yourbook.yourBookList}" var="book"
+            class="editableCarTable">
+            <b:dataTableColumn value="#{book.title}" />
+            <b:dataTableColumn value="#{book.author}" />
+            <b:dataTableColumn label="Return" >
+                <b:commandButton disabled="#{book.rented == 'no'}" value="Return" action="#{yourbook.returnBook(book)}"/>               
+            </b:dataTableColumn>
+        </b:dataTable>
+        
+        <b:commandButton action="admin?faces-redirect=true" value="Back to main"></b:commandButton>
+    </h:form>
+    
 </h:body>
 </html>

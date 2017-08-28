@@ -4,8 +4,10 @@ import java.io.IOException;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
+import javax.faces.context.ExternalContext;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 
 import org.apache.http.HttpEntity;
 import org.apache.http.HttpResponse;
@@ -60,6 +62,10 @@ public class Book {
 			HttpResponse response = (HttpResponse) client.execute(request);
 			HttpEntity entity = response.getEntity();
 			System.out.println(response.toString());
+			ExternalContext ec = FacesContext.getCurrentInstance().getExternalContext();
+		    ec.redirect(((HttpServletRequest) ec.getRequest()).getContextPath()+ "/admin.xhtml");
+		    System.out.println("CONTEXT PATH" + ((HttpServletRequest) ec.getRequest()).getContextPath());
+		    
 		} catch (IOException | ParseException ex) {
 			System.out.println("RESTAuthBean: save user error " + ex.getLocalizedMessage());
 		}

@@ -6,10 +6,12 @@ import org.hibernate.cfg.Configuration;
 
 public class DatabaseConnection {
 
-	static SessionFactory sessionFactory;
+	static SessionFactory sessionFactory = null;
 
 	public static Session getSession() {
-
+		if(sessionFactory != null) {
+			return sessionFactory.getCurrentSession();
+		}
 		Configuration conf = new Configuration();
 		conf.setProperty("hibernate.temp.use_jdbc_metadata_defaults", "false");
 		conf.configure();

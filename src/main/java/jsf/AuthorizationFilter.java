@@ -26,7 +26,7 @@ public class AuthorizationFilter implements Filter {
 		
 		HttpServletRequest httpRequest = (HttpServletRequest) request;
 		HttpServletResponse httpResponse = (HttpServletResponse) response;
-		HttpSession session = httpRequest.getSession(false);
+		HttpSession session = httpRequest.getSession(true);
 		
 		String requestURI = httpRequest.getRequestURI();
 		
@@ -37,6 +37,14 @@ public class AuthorizationFilter implements Filter {
 		} else {
 			httpResponse.sendRedirect(httpRequest.getContextPath() + "login.xhtml");
 		}
+		
+/*		if ( !(requestURI.contains("login") || requestURI.contains("register")) && session.getAttribute("username") == null) {
+			System.out.println("USERNAME" + session.getAttribute("username"));
+			httpResponse.sendRedirect(httpRequest.getContextPath() + "/login.xhtml");
+			return;
+		}
+		chain.doFilter(request, response);*/
+		
 	}
 
 	@Override

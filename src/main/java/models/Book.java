@@ -7,7 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="bookTest")
+@Table(name="book")
 public class Book {
 
 	@Id
@@ -16,11 +16,12 @@ public class Book {
 	
 	private String author;
 	private String title;
-	
+	private String rented = "no";
 	
 	@Override
 	public String toString() {
-		System.out.println("" + id  + author + " " + title);
+		System.out.println("" + getId()  + author + " " + title);
+		System.out.println(rented);
 		return super.toString();
 	}
 	
@@ -34,7 +35,30 @@ public class Book {
 	public String getAuthor() {
 		return author;
 	}
+	
 	public void setAuthor(String author) {
 		this.author = author;
 	}
+
+
+	public String getRented() {
+		return rented;
+	}
+
+
+	public void setRented(String rented) {
+		this.rented = rented;
+	}
+
+
+	public int getId() {
+		return id;
+	}
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+	
+
 }
