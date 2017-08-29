@@ -30,20 +30,20 @@ public class AuthorizationFilter implements Filter {
 		
 		String requestURI = httpRequest.getRequestURI();
 		
-		if(requestURI.indexOf("/login.xhtml") >= 0 ||
-				(session.getAttribute("username") != null)
-				) { 
-			chain.doFilter(httpRequest, response);
-		} else {
-			httpResponse.sendRedirect(httpRequest.getContextPath() + "login.xhtml");
-		}
-		
-/*		if ( !(requestURI.contains("login") || requestURI.contains("register")) && session.getAttribute("username") == null) {
+//		if(requestURI.contains("/login.xhtml") ||
+//				(session.getAttribute("username") != null)
+//				 || requestURI.contains("rest")) { 
+//			chain.doFilter(httpRequest, response);
+//		} else {
+//			httpResponse.sendRedirect(httpRequest.getContextPath() + "login.xhtml");
+//		}
+//		
+		if ( !(requestURI.contains("login") || requestURI.contains("register") || requestURI.contains("rest")) && session.getAttribute("username") == null) {
 			System.out.println("USERNAME" + session.getAttribute("username"));
 			httpResponse.sendRedirect(httpRequest.getContextPath() + "/login.xhtml");
 			return;
 		}
-		chain.doFilter(request, response);*/
+		chain.doFilter(request, response);
 		
 	}
 

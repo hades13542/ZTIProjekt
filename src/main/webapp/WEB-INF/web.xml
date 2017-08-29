@@ -39,7 +39,7 @@
 	<welcome-file-list>
 		<welcome-file>login.xhtml</welcome-file>
 	</welcome-file-list>
-<!-- 
+
 	<filter>
 		<filter-name>AuthFilter</filter-name>
 		<filter-class>jsf.AuthorizationFilter</filter-class>
@@ -49,5 +49,5 @@
 	   <filter-name>AuthFilter</filter-name>
 	   <url-pattern>/*</url-pattern>
 	   <dispatcher>REQUEST</dispatcher>
-	</filter-mapping> -->
+	</filter-mapping>
 </web-app>

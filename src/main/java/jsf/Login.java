@@ -66,6 +66,7 @@ public class Login implements Serializable {
 	}
 	
 	public String logout() {
+		SessionUtils.getSession().setAttribute("username", null);
 		SessionUtils.getSession().invalidate();
 		return "login";
 	}
