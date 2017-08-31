@@ -5,10 +5,11 @@
 	xmlns:b="http://bootsfaces.net/ui"
 	xmlns:h="http://java.sun.com/jsf/html">
 <h:head>
-	<title>Facelet Title</title>
+	<title>Library Mainpage</title>
 </h:head>
 <h:body>
 	<h:form>
+	<b:container layout="fluid">
 		<b:panel title="Welcome #{login.username}" look="primary">
 			<!-- 	<p>"Welcome #{login.username}"</p> -->
 			<b:commandButton look="primary" action="#{login.addBook}"
@@ -20,6 +21,7 @@
 			<b:commandButton look="primary" action="#{login.logout}"
 				value="Logout"></b:commandButton>
 		</b:panel>
+		</b:container>
 	</h:form>
 </h:body>
 </html>

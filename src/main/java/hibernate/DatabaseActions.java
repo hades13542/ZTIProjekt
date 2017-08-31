@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
@@ -12,8 +13,23 @@ import jsf.SessionUtils;
 import models.Book;
 import models.User;
 
+/**
+ * Class to handle connection with datababase.
+ */
 public class DatabaseActions {
 
+	final static Logger log = Logger.getLogger(DatabaseActions.class);
+
+	private DatabaseActions() {
+		//Access it with static way
+	}
+	
+	/**
+	 * Method to find user via login in database and if exist check if password is correct.
+	 * @param login
+	 * @param password
+	 * @return true if given password match to password in database, otherwise false.
+	 */
 	public static boolean findUserInDatabase(String login, String password) {
 		Session session = DatabaseConnection.getSession();
 		session.beginTransaction();
@@ -22,10 +38,15 @@ public class DatabaseActions {
 		User user = (User) session.createQuery(query).uniqueResult();
 		session.close();
 		DatabaseConnection.closeSession();
-		System.out.println("" + user.getUname() + user.getPassword()); // TODO: remove
+		log.debug("" + user.getUname() + user.getPassword());
 		return password.equals(user.getPassword());
 	}
 
+	/**
+	 * Method to check if username is not already taken.
+	 * @param username
+	 * @return true if username is taken, otherwise false. 
+	 */
 	public static boolean isUsernameAvailable(String username) {
 		Session session = DatabaseConnection.getSession();
 		session.beginTransaction();
@@ -38,10 +59,14 @@ public class DatabaseActions {
 		if (user == null) {
 			return false;
 		}
-		System.out.println("" + user.getUname() + user.getPassword()); // TODO: remove
+		log.debug("" + user.getUname() + user.getPassword());
 		return true;
 	}
 
+	/**
+	 * Method to create new user in database
+	 * @param newUser
+	 */
 	public static void createNewUser(User newUser) {
 		Session session = DatabaseConnection.getSession();
 		session.beginTransaction();
@@ -51,6 +76,10 @@ public class DatabaseActions {
 		DatabaseConnection.closeSession();
 	}
 
+	/**
+	 * Method to create new Book in database 
+	 * @param book
+	 */
 	public static void addBook(Book book) {
 		Session session = DatabaseConnection.getSession();
 		session.beginTransaction();
@@ -60,6 +89,10 @@ public class DatabaseActions {
 		DatabaseConnection.closeSession();
 	}
 
+	/**
+	 * Method to update book instance that exist in database
+	 * @param book
+	 */
 	public static void updateBook(Book book) {
 		Session session = DatabaseConnection.getSession();
 		Transaction tx = null;
@@ -77,6 +110,10 @@ public class DatabaseActions {
 		}
 	}
 
+	/**
+	 * Method to fetch all books from database
+	 * @return list of Books 
+	 */
 	public static Book[] getAllBooks() {
 		Session session = DatabaseConnection.getSession();
         session.beginTransaction();
@@ -92,6 +129,11 @@ public class DatabaseActions {
 		return v;
 	}
 
+	/**
+	 * Method to fetch all books rented by user from database
+	 * @param id username
+	 * @return list of rented books
+	 */
 	public static Book[] getYourBooks(String id) {
 		Session session = DatabaseConnection.getSession();
         session.beginTransaction();
@@ -107,13 +149,16 @@ public class DatabaseActions {
 		return v;
 	}
 
+	/**
+	 * Method to mark book as not rented
+	 * @param book
+	 */
 	public static void returnBook(Book book) {
 		Session session = DatabaseConnection.getSession();
 		Transaction tx = null;
 		try {
 			tx = session.beginTransaction();
 			Book tempBook = (Book) session.get(Book.class, book.getId());
-			HttpSession httpSession = SessionUtils.getSession();
 			tempBook.setRented("no");
 			session.update(tempBook);
 			tx.commit();

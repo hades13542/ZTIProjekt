@@ -14,7 +14,7 @@
 					<b:column medium-screen="2">
 						<h:outputText value="Username" />
 					</b:column>
-					<b:column medium-screen="2">
+					<b:column medium-screen="4">
 						<b:inputText id="username" value="#{login.username}"
                             placeholder="Username"></b:inputText>
 					</b:column>
@@ -27,7 +27,7 @@
 					<b:column medium-screen="2">
 						<h:outputText value="Password" />
 					</b:column>
-					<b:column medium-screen="2">
+					<b:column medium-screen="4">
 						<b:inputSecret id="password" value="#{login.password}"
 							placeholder="Password"></b:inputSecret>
 					</b:column>
@@ -41,9 +41,7 @@
 						<b:commandButton action="#{login.validateUsernamePassword}"
 							value="Login" look="primary" style="width:100%" />
 					</b:column>
-				</b:row>
-				<b:row>
-					<b:column span="2" offset="2">
+					<b:column span="2">
 						<b:commandButton value="Register"
 							action="register?faces-redirect=true" update="@form"
 							look="warning" style="width:100%" />

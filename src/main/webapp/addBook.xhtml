@@ -14,7 +14,7 @@
 					<b:column medium-screen="2">
 						<h:outputText value="Title" />
 					</b:column>
-					<b:column medium-screen="2">
+					<b:column medium-screen="4">
 						<b:inputText id="title" value="#{book.title}"
 							placeholder="Insert title here"></b:inputText>
 					</b:column>
@@ -27,7 +27,7 @@
 					<b:column medium-screen="2">
 						<h:outputText value="Author" />
 					</b:column>
-					<b:column medium-screen="2">
+					<b:column medium-screen="4">
 						<b:inputText id="author" value="#{book.author}"
 							placeholder="Insert title here"></b:inputText>
 					</b:column>
@@ -42,9 +42,7 @@
 							action="#{book.addBookToDatabase}"
 							look="primary" style="width:100%" />
 					</b:column>
-				</b:row>
-				<b:row>
-					<b:column span="2" offset="2">
+					<b:column span="2" >
 						<b:commandButton value="Back" action="admin?faces-redirect=true"
 							update="@form" look="warning" style="width:100%" />
 					</b:column>

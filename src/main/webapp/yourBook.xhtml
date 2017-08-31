@@ -9,16 +9,20 @@
 <h:body>
 
     <h:form>
+    <b:container layout="fluid">
+    <b:panel title="Your Books" look="primary">
         <b:dataTable value="#{yourbook.yourBookList}" var="book"
             class="editableCarTable">
             <b:dataTableColumn value="#{book.title}" />
             <b:dataTableColumn value="#{book.author}" />
             <b:dataTableColumn label="Return" >
-                <b:commandButton disabled="#{book.rented == 'no'}" value="Return" action="#{yourbook.returnBook(book)}"/>               
+                <b:commandButton disabled="#{book.rented == 'no'}" look="primary" value="Return" action="#{yourbook.returnBook(book)}"/>               
             </b:dataTableColumn>
         </b:dataTable>
         
-        <b:commandButton action="admin?faces-redirect=true" value="Back to main"></b:commandButton>
+        <b:commandButton action="admin?faces-redirect=true" look="warning" value="Back to main"></b:commandButton>
+    </b:panel>
+    </b:container>
     </h:form>
     
 </h:body>
